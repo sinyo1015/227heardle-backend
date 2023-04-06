@@ -1,0 +1,25 @@
+{
+  "name": "227heardle-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@types/better-sqlite3": "^7.6.3",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.15.11",
+    "better-sqlite3": "^8.2.0",
+    "concurrently": "^8.0.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "js-ffmpeg": "^0.0.38",
+    "nodemon": "^2.0.22",
+    "typescript": "^5.0.3",
+    "yt-dlp-wrap": "^2.3.11"
+  },
+  "scripts": {
+    "build": "npx tsc src/index.ts",
+    "start": "node dist/index.js",
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\""
+  }
+}
