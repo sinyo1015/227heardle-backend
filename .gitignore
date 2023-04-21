@@ -3,7 +3,5 @@
 node_modules
 /node_modules
 docker-compose.yml
-dist
-/dist
 yarn-error.log
 /yarn-error.log

@@ -9,13 +9,13 @@ import fs from "fs";
 
 const location: string = path.join(__dirname, "../../data");
 const db = new Database(`${location}/main.db`, {verbose: console.log});
-const ytDlpWrap = new YTDlpWrap(process.env.YT_DLP_BINARY);
+const ytDlpWrap = new YTDlpWrap();
 
 const _doWork = () => {
     //Get random music
-    const previousChallange = db.prepare("SELECT * FROM daily_challanges ORDER BY id DESC LIMIT 1").get();
-    const queryResult = db.prepare("SELECT *, track_list.id as track_list_id FROM track_list JOIN albums ON albums.id = track_list.album_id ORDER BY RANDOM() LIMIT 1").get();
-    const selectedSong = db.prepare(`SELECT * FROM track_list_streaming_sites WHERE track_list_id = ? AND type = ?`).get(queryResult.track_list_id, "youtube");
+    const previousChallange: any = db.prepare("SELECT * FROM daily_challanges ORDER BY id DESC LIMIT 1").get();
+    const queryResult: any = db.prepare("SELECT *, track_list.id as track_list_id FROM track_list JOIN albums ON albums.id = track_list.album_id ORDER BY RANDOM() LIMIT 1").get();
+    const selectedSong: any = db.prepare(`SELECT * FROM track_list_streaming_sites WHERE track_list_id = ? AND type = ?`).get(queryResult.track_list_id, "youtube");
 
     
     const filename = `${md5(new Date().getMilliseconds().toString())}`;
@@ -73,7 +73,7 @@ const _doWork = () => {
 };
 
 const AUDIO_CROPPER_BACKGROUND_SERVICE = () => {    
-    const job = new CronJob("59 23 * * *", _doWork);
+    const job = new CronJob("* * * * *", _doWork);
 
     job.start();
 }

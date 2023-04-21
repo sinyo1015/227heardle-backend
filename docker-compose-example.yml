@@ -1,2 +1,11 @@
-PORT="3000"
-YT_DLP_BINARY="/path/to/your/yt-dlp-binary"
+services:
+    main:
+      build: .
+      environment:
+        - YT_DLP_BINARY=""
+        - PORT="3000"
+      volumes:
+        - ./data:/src/data
+        - ./dist:/src/dist
+      ports:
+        - "0.0.0.0:3000:3000"
