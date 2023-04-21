@@ -73,6 +73,7 @@ const _doWork = () => {
 };
 
 const AUDIO_CROPPER_BACKGROUND_SERVICE = () => {    
+    //Change the cronjob pattern as you desired
     const job = new CronJob("* * * * *", _doWork);
 
     job.start();
