@@ -2,8 +2,9 @@ services:
     main:
       build: .
       environment:
-        - YT_DLP_BINARY=""
-        - PORT="3000"
+        - YT_DLP_BINARY=
+        - PORT=3000
+        - TZ=Asia/Jakarta
       volumes:
         - ./data:/src/data
         - ./dist:/src/dist
